@@ -1,15 +1,17 @@
 /**
- * pages页面快速生成脚本
+ * pages页面快速生成脚本 
  * 用法：npm run com `文件名`
+ * author: asheng
+ * date: 2018.11.9 
  */
 
-const fs = require("fs");
+const fs = require('fs');
 
 const dirName = process.argv[2];
 const capPirName = dirName.substring(0, 1).toUpperCase() + dirName.substring(1);
 if (!dirName) {
-  console.log("文件夹名称不能为空！");
-  console.log("示例：npm run com test");
+  console.log('文件夹名称不能为空！');
+  console.log('示例：npm run tep test');
   process.exit(0);
 }
 
@@ -39,17 +41,20 @@ class ${capPirName} extends Component<${capPirName}Props,${capPirName}State > {
 }
 
 export default ${capPirName}
-`;
+`
 
 // scss文件模版
-const scssTep = `
-${dirName}-wrap {
-    width: 100%;
- }
-`;
+const scssTep = `@import "../../assets/scss/variables";
 
-const interfaceTep = `
-/**
+.#{$prefix} {
+
+  &-${dirName}-wrap {
+    width: 100%;
+  }
+}
+`
+
+const interfaceTep = `/**
  * ${dirName}.state 参数类型
  *
  * @export
@@ -64,7 +69,7 @@ export interface ${capPirName}State {}
  * @interface ${capPirName}Props
  */
 export interface ${capPirName}Props {}
-`;
+`
 
 fs.mkdirSync(`./src/components/${dirName}`); // mkdir $1
 process.chdir(`./src/components/${dirName}`); // cd $1

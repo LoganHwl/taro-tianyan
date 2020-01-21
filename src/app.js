@@ -24,12 +24,32 @@ const store = dvaApp.getStore();
 
 class App extends Component {
   config = {
-    pages: ["pages/index/index"],
+    pages: ["pages/index/index", "pages/my/my"],
     window: {
       backgroundTextStyle: "light",
       navigationBarBackgroundColor: "#fff",
-      navigationBarTitleText: "网易严选",
+      navigationBarTitleText: "珠江天眼",
       navigationBarTextStyle: "black"
+    },
+    tabBar: {
+      color: "#666",
+      selectedColor: "#b4282d",
+      backgroundColor: "#fafafa",
+      borderStyle: "black",
+      list: [
+        {
+          pagePath: "pages/index/index",
+          // iconPath: "./assets/tab-bar/home.png",
+          // selectedIconPath: "./assets/tab-bar/home-active.png",
+          text: "首页"
+        },
+        {
+          pagePath: "pages/my/my",
+          // iconPath: "./assets/tab-bar/home.png",
+          // selectedIconPath: "./assets/tab-bar/home-active.png",
+          text: "我的"
+        }
+      ]
     }
   };
 
